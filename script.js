@@ -133,6 +133,11 @@
     ["revealStep1", "revealSorpresa", "revealStep2", "revealRole", "revealBaby", "revealPiggy"].forEach(function (id) { hide($(id)); });
     ["screen-reveal", "screen-survey", "screen-baby", "screen-letter", "screen-footer"].forEach(function (id) { hide($(id)); });
     $("piggyThought").textContent = "Clickeame";
+    var piggyImgReset = document.querySelector("#piggyWrap .piggy-img");
+    if (piggyImgReset) {
+      piggyImgReset.setAttribute("src", "assets/cochinito.webp");
+      piggyImgReset.setAttribute("alt", "Cochinito en acuarela");
+    }
     hide($("piggyText")); hide($("clabeBox")); hide($("coinCounter"));
     coins = 0; $("coinCount").textContent = "0";
     $("nameInput").value = "";
@@ -143,6 +148,13 @@
   /* ---------- 3. Cochinito ---------- */
   function onPiggyClick() {
     if (!currentPerson) return;
+    // Al primer clic el cochinito cambia a su versión sonriente
+    // (mismo estilo acuarela, solo cambia la expresión) y se queda así.
+    var piggyImg = document.querySelector("#piggyWrap .piggy-img");
+    if (piggyImg && piggyImg.getAttribute("src") !== "assets/cochinito-sonriente.webp") {
+      piggyImg.setAttribute("src", "assets/cochinito-sonriente.webp");
+      piggyImg.setAttribute("alt", "Cochinito sonriente en acuarela");
+    }
     coins += 1;
     $("coinCount").textContent = String(coins);
     show($("coinCounter"));
