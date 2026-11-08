@@ -298,125 +298,21 @@
   };
 
 
-  /* Ilustración animada del bebé por etapa (SVG inline, estilo acuarela cálida).
-     Sin emojis: la figura cambia visiblemente con la semana. */
-  function babyStage(w) {
-    if (w <= 3) return 0;
-    if (w <= 5) return 1;
-    if (w <= 8) return 2;
-    if (w <= 12) return 3;
-    if (w <= 20) return 4;
-    return 5;
-  }
-  function babySvgForWeek(w) {
-    var s = babyStage(w);
-    var glow = '<circle class="glow" cx="150" cy="150" r="118" fill="url(#bgGlow)"/>';
-    var defs = '<defs>'
-      + '<radialGradient id="bgGlow" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#ffe9c9"/><stop offset="60%" stop-color="#ffd9b8"/><stop offset="100%" stop-color="#f6c6c6" stop-opacity="0.25"/></radialGradient>'
-      + '<linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fbd7b3"/><stop offset="55%" stop-color="#f3b98d"/><stop offset="100%" stop-color="#e89a72"/></linearGradient>'
-      + '<linearGradient id="skin2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fde3c2"/><stop offset="100%" stop-color="#f0b184"/></linearGradient>'
-      + '</defs>';
-    var open = '<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' + defs + glow;
-    var close = '</svg>';
-    if (s === 0) {
-      // Semanas 1-3: prueba de embarazo positiva + papás llorando de alegría.
-      return open
-        + '<g class="breathe">'
-        + '<rect x="118" y="36" width="64" height="118" rx="16" fill="#fff" stroke="#d98a6a" stroke-width="3"/>'
-        + '<rect x="130" y="52" width="40" height="26" rx="6" fill="#ffe9c9" stroke="#e8c9a8" stroke-width="2"/>'
-        + '<path d="M136 65 h10 M150 65 h10" stroke="#d97b84" stroke-width="5" stroke-linecap="round"/>'
-        + '<circle cx="150" cy="106" r="16" fill="#e6f7ec" stroke="#25d366" stroke-width="3"/><path d="M142 106 l6 6 l10 -12" fill="none" stroke="#1da851" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
-        + '<text x="150" y="140" text-anchor="middle" font-size="11" font-family="Quicksand, sans-serif" font-weight="700" fill="#4f3423">POSITIVO</text>'
-        + '</g>'
-        + '<g class="bob">'
-        + '<circle cx="88" cy="216" r="24" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
-        + '<circle cx="80" cy="212" r="3" fill="#4f3423"/><circle cx="96" cy="212" r="3" fill="#4f3423"/>'
-        + '<path d="M80 226 q8 8 16 0" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path class="tear" d="M78 220 q-4 8 0 11 q4 -3 0 -11" fill="#7fb3d5"/>'
-        + '<path d="M64 246 q24 -14 48 0 l-6 22 h-36 z" fill="#7fb3d5" stroke="#5a8fb0" stroke-width="2"/>'
-        + '<circle cx="212" cy="216" r="24" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3"/>'
-        + '<circle cx="204" cy="212" r="3" fill="#4f3423"/><circle cx="220" cy="212" r="3" fill="#4f3423"/>'
-        + '<path d="M204 226 q8 8 16 0" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path class="tear" d="M222 220 q-4 8 0 11 q4 -3 0 -11" fill="#7fb3d5"/>'
-        + '<path d="M188 246 q24 -14 48 0 l-6 22 h-36 z" fill="#e89aa0" stroke="#d97b84" stroke-width="2"/>'
-        + '<path d="M118 250 q32 -18 64 0" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
-        + '<path d="M146 244 l0 -14 M154 244 l0 -14" stroke="#e89aa0" stroke-width="5" stroke-linecap="round"/>'
-        + '</g>' + close;
-    }
-    if (s === 1) {
-      // Semanas 4-5: embrión diminuto, forma curva en C, sin extremidades.
-      return open
-        + '<g class="breathe"><path d="M150 96 C 118 96 102 124 112 156 C 120 182 142 200 168 196 C 192 192 202 168 194 146 C 188 128 176 96 150 96 Z" fill="url(#skin)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
-        + '<circle cx="138" cy="128" r="5" fill="#4f3423" opacity="0.75"/>'
-        + '<path d="M112 156 C 104 176 118 192 138 194" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
-        + '<circle cx="196" cy="222" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="176" cy="238" r="3" fill="#e89aa0" opacity="0.6"/><circle cx="214" cy="204" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
-    }
-    if (s === 2) {
-      // Semanas 6-8: embrión original en forma de C, acuarela suave:
-      // cabeza grande arriba, cuerpo curvado, cordón hacia el saquito.
-      return open
-        + '<g class="breathe">'
-        + '<ellipse class="glow" cx="96" cy="238" rx="52" ry="30" fill="#fde3c2" opacity="0.85"/>'
-        + '<ellipse cx="96" cy="238" rx="44" ry="24" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3"/>'
-        + '<path d="M118 226 C 140 212 156 198 162 180 C 166 170 162 162 154 160" fill="none" stroke="#e8a87c" stroke-width="5" stroke-linecap="round"/>'
-        + '<path d="M168 88 C 138 62 96 70 80 100 C 66 126 74 162 100 180 C 122 195 152 192 166 172 C 178 155 176 132 162 122 C 172 116 174 100 168 88 Z" fill="url(#skin)" stroke="#cf8261" stroke-width="3" stroke-linejoin="round"/>'
-        + '<ellipse cx="118" cy="112" rx="26" ry="30" fill="#fde3c2" opacity="0.45"/>'
-        + '<circle cx="112" cy="108" r="8" fill="#4f3423"/><circle cx="115" cy="105" r="2.8" fill="#fff"/>'
-        + '<path d="M84 132 C 80 146 88 158 100 162" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M162 122 C 172 128 176 140 170 150" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M166 172 C 176 186 172 204 156 212" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M100 180 C 92 196 96 210 110 218" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
-        + '<circle cx="216" cy="226" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="198" cy="244" r="3" fill="#f2c96b" opacity="0.8"/><circle cx="232" cy="206" r="3" fill="#e89aa0" opacity="0.6"/>'
-        + '</g>' + close;
-    }
-    if (s === 3) {
-      // Semanas 9-12: bebito pequeño, brotes de brazos y piernas.
-      return open
-        + '<g class="breathe"><ellipse cx="150" cy="118" rx="52" ry="48" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
-        + '<circle cx="132" cy="112" r="6" fill="#4f3423"/><circle cx="168" cy="112" r="6" fill="#4f3423"/>'
-        + '<path d="M138 138 Q150 146 162 138" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M150 166 C 128 166 116 186 120 208 C 124 228 140 238 158 236 C 178 234 188 216 184 196 C 181 178 170 166 150 166 Z" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
-        + '<path d="M122 188 C 108 196 104 210 112 220" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
-        + '<path d="M180 190 C 192 198 194 212 186 222" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
-        + '<path d="M138 236 C 134 248 138 256 148 258" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
-        + '<path d="M164 236 C 168 248 164 256 154 258" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/></g>' + close;
-    }
-    if (s === 4) {
-      // Semanas 13-20: más parecido a un bebé, brazos y piernas con manitas y pies.
-      return open
-        + '<g class="breathe"><ellipse cx="150" cy="106" rx="56" ry="52" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
-        + '<circle cx="130" cy="100" r="6" fill="#4f3423"/><circle cx="170" cy="100" r="6" fill="#4f3423"/>'
-        + '<path d="M142 124 Q150 130 158 124" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M112 78 Q126 62 142 66" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M150 158 C 122 158 106 182 112 210 C 117 234 136 248 158 246 C 182 244 194 222 188 198 C 183 176 172 158 150 158 Z" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
-        + '<path class="bob" d="M114 182 C 96 192 90 210 100 224" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/>'
-        + '<circle cx="100" cy="226" r="7" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
-        + '<path d="M186 184 C 202 194 206 210 198 224" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/>'
-        + '<circle cx="198" cy="226" r="7" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
-        + '<path d="M134 246 C 128 262 132 272 144 276" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/>'
-        + '<path d="M166 246 C 172 262 168 272 156 276" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/></g>' + close;
-    }
-    // Semanas 21-40: bebé más grande, acurrucado, con manitas cerca de la cara y pies.
-    return open
-      + '<g class="breathe"><ellipse cx="150" cy="112" rx="64" ry="58" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
-      + '<circle cx="126" cy="106" r="7" fill="#4f3423"/><circle cx="128" cy="104" r="2.5" fill="#fff"/>'
-      + '<circle cx="174" cy="106" r="7" fill="#4f3423"/><circle cx="176" cy="104" r="2.5" fill="#fff"/>'
-      + '<path d="M140 132 Q150 140 160 132" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
-      + '<path d="M106 82 Q122 62 144 66" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
-      + '<path d="M150 168 C 116 168 96 196 104 228 C 111 256 134 272 160 270 C 188 268 204 242 196 212 C 189 186 174 168 150 168 Z" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
-      + '<path class="bob" d="M110 198 C 92 210 88 230 100 244" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
-      + '<circle cx="102" cy="246" r="9" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
-      + '<path d="M190 200 C 206 212 210 230 200 244" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
-      + '<circle cx="200" cy="246" r="9" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
-      + '<path d="M132 268 C 124 282 130 290 144 292" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
-      + '<path d="M168 268 C 176 282 170 290 156 292" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
-      + '<circle cx="232" cy="240" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="216" cy="258" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
+  /* Imagen del bebé por semana (acuarelas generadas, en assets/).
+     Mapa: 1-3 prueba de embarazo, 4-8 embrión semana 6,
+     9-16 feto semana 12, 17-40 feto semana 20. */
+  function babyImageForWeek(w) {
+    if (w <= 3) return { src: "assets/prueba-semana-3.webp", alt: "Prueba de embarazo positiva y papás llorando de alegría" };
+    if (w <= 8) return { src: "assets/bebe-semana-6.webp", alt: "Embrión en forma de C dentro de una burbuja" };
+    if (w <= 16) return { src: "assets/bebe-semana-12.webp", alt: "Feto en una burbuja" };
+    return { src: "assets/bebe-semana-20.webp", alt: "Feto en una burbuja" };
   }
 
   function renderWeek(w) {
     w = Math.max(1, Math.min(CURRENT_WEEK, w));
     var d = WEEK_DATA[w] || WEEK_DATA[6];
-    $("weekBabyArt").innerHTML = babySvgForWeek(w);
+    var img = babyImageForWeek(w);
+    $("weekBabyArt").innerHTML = '<img src="' + img.src + '" alt="' + img.alt + '" loading="lazy">';
     $("weekTitle").textContent = "Semana " + w;
     $("weekLabel").textContent = "Semana " + w;
     $("weekSize").textContent = d.size;

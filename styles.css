@@ -211,6 +211,8 @@ footer { margin-top: 48px; }
 /* ---- Bebé por semana: ilustración SVG animada (sin emoji) ---- */
 .week-baby-art { width: min(280px, 78vw); margin: 6px auto 2px; animation: floaty 3.2s ease-in-out infinite; }
 .week-baby-art svg { width: 100%; height: auto; display: block; filter: drop-shadow(0 10px 18px rgba(217, 123, 132, 0.25)); }
+.week-baby-art img { width: 100%; height: auto; display: block; border-radius: 24px; filter: drop-shadow(0 10px 18px rgba(217, 123, 132, 0.25)); }
+.baby-stage .baby-img { width: min(280px, 78vw); height: auto; display: block; margin: 0 auto; border-radius: 24px; filter: drop-shadow(0 10px 18px rgba(217, 123, 132, 0.25)); }
 .week-baby-art .breathe { transform-box: fill-box; transform-origin: center; animation: breathe 3s ease-in-out infinite; }
 .week-baby-art .bob { transform-box: fill-box; transform-origin: center; animation: bobSoft 2.6s ease-in-out infinite; }
 @keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
