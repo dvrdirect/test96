@@ -243,49 +243,131 @@
 
   /* ---------- 5. Bebé por semana ---------- */
   var WEEK_DATA = {
-    4: { emoji: "🌱", size: "Aproximadamente 2 mm, como una semilla de amapola", forming: "Se forma el saco gestacional y empiezan las primeras células del bebé.", fact: "A esta edad, el bebé es más pequeño que un grano de arroz." },
-    5: { emoji: "🌱", size: "Aproximadamente 2-3 mm", forming: "Empieza a formarse el tubo neural, que luego será el cerebro y la columna.", fact: "El corazón empieza a formarse, aunque todavía no se puede escuchar." },
-    6: { emoji: "🫘", size: "Entre 4 y 6 mm, como una lenteja", forming: "El corazón ya late, se forman los brotes de brazos y piernas, y la cabeza empieza a tomar forma.", fact: "El embrión tiene forma de C, como en las imágenes de la app Embarazo+." },
-    7: { emoji: "🫐", size: "Aproximadamente 1 cm, como un arándano", forming: "El cerebro crece rápido y se forman las manos y los pies.", fact: "El bebé ya se mueve un poquito, aunque todavía no se siente." },
-    8: { emoji: "🍇", size: "Aproximadamente 1.5 cm, como una uva", forming: "Se forman los dedos, los ojos y las orejas, y el corazón late más fuerte.", fact: "Ya tiene todos los órganos principales empezando a formarse." },
-    9: { emoji: "🍒", size: "Aproximadamente 2.3 cm, como una cereza", forming: "Se forman los codos, las rodillas y los párpados.", fact: "El bebé empieza a tragar y a mover los brazos." },
-    10: { emoji: "🍓", size: "Aproximadamente 3 cm, como una fresa", forming: "Los órganos principales ya están formados y empiezan a funcionar juntos.", fact: "Los dedos de las manos y los pies ya se separaron." },
-    11: { emoji: "🍋", size: "Aproximadamente 4 cm, como un limón pequeño", forming: "Se forman las uñas, los dientes de leche y el bebé empieza a bostezar.", fact: "El bebé ya puede abrir y cerrar las manos." },
-    12: { emoji: "🍑", size: "Aproximadamente 5-6 cm, como un durazno pequeño", forming: "Los reflejos empiezan: el bebé responde al tacto y mueve la boca.", fact: "Termina el primer trimestre, una etapa muy importante." },
-    13: { emoji: "🍋", size: "Aproximadamente 7 cm", forming: "Las cuerdas vocales se forman y el bebé traga líquido amniótico.", fact: "El bebé ya tiene huellas dactilares empezando a formarse." },
-    14: { emoji: "🍎", size: "Aproximadamente 9 cm", forming: "El bebé hace muecas, frunce el ceño y mueve los brazos.", fact: "Ya se puede saber, con estudios, si será niño o niña." },
-    15: { emoji: "🍐", size: "Aproximadamente 10 cm", forming: "La piel es muy fina y se ve el esqueleto empezando a endurecerse.", fact: "El bebé ya siente la luz a través de la pancita." },
-    16: { emoji: "🥑", size: "Aproximadamente 12 cm, como un aguacate", forming: "Los ojos se mueven, las orejas ya están en su lugar y el bebé escucha sonidos.", fact: "El bebé ya puede escuchar tu voz." },
-    17: { emoji: "🧅", size: "Aproximadamente 13 cm", forming: "El esqueleto se vuelve hueso y el bebé se mueve más.", fact: "El bebé practica succionar con el pulgar." },
-    18: { emoji: "🫑", size: "Aproximadamente 14 cm", forming: "Las orejas ya están formadas y el bebé escucha los latidos de mamá.", fact: "Es un buen momento para hablarle y ponerle música." },
-    19: { emoji: "🥭", size: "Aproximadamente 15 cm", forming: "Se forma una capa protectora en la piel y el bebé se mueve mucho.", fact: "Mamá puede empezar a sentir los primeros movimientos." },
-    20: { emoji: "🍌", size: "Aproximadamente 16-17 cm, como un plátano", forming: "El bebé traga, produce sus primeras deposiciones y mueve las piernas.", fact: "Llegó la mitad del embarazo. ¡Ya falta menos!" },
-    21: { emoji: "🥕", size: "Aproximadamente 27 cm de la cabeza a los pies", forming: "El bebé practica tragar y los movimientos son más fuertes.", fact: "El bebé ya tiene horarios de sueño y vigilia." },
-    22: { emoji: "🥦", size: "Aproximadamente 28 cm", forming: "Los labios y las cejas se distinguen, y el bebé reacciona a los sonidos.", fact: "El bebé ya distingue sonidos fuertes y suaves." },
-    23: { emoji: "🌽", size: "Aproximadamente 29 cm", forming: "Los pulmones empiezan a prepararse para respirar.", fact: "El bebé ya tiene hipo de vez en cuando." },
-    24: { emoji: "🌽", size: "Aproximadamente 30 cm", forming: "La piel se vuelve menos transparente y el bebé gana peso.", fact: "El bebé ya puede abrir los ojos." },
-    25: { emoji: "🥬", size: "Aproximadamente 35 cm", forming: "El bebé responde a la voz de mamá y papá.", fact: "El bebé ya tiene el cabello empezando a crecer." },
-    26: { emoji: "🥬", size: "Aproximadamente 36 cm", forming: "Los pulmones siguen madurando y el cerebro crece rápido.", fact: "El bebé ya parpadea." },
-    27: { emoji: "🥦", size: "Aproximadamente 37 cm", forming: "El bebé duerme y despierta en ciclos, como un recién nacido.", fact: "Empieza el tercer trimestre." },
-    28: { emoji: "🍆", size: "Aproximadamente 38 cm", forming: "El bebé practica respirar y sus ojos ya detectan la luz.", fact: "El bebé ya sueña durante el sueño." },
-    29: { emoji: "🥒", size: "Aproximadamente 39 cm", forming: "Los músculos y los pulmones siguen madurando.", fact: "El bebé ya pesa más de 1 kilo." },
-    30: { emoji: "🥬", size: "Aproximadamente 40 cm", forming: "El cerebro desarrolla surcos y el bebé gana grasa.", fact: "El bebé ya se acomoda con la cabeza hacia abajo." },
-    31: { emoji: "🥥", size: "Aproximadamente 41 cm", forming: "El bebé puede girar la cabeza y sus movimientos son más suaves.", fact: "El bebé ya reconoce la voz de mamá." },
-    32: { emoji: "🥥", size: "Aproximadamente 42 cm", forming: "Los huesos se endurecen, menos los del cráneo.", fact: "El bebé practica respirar con más fuerza." },
-    33: { emoji: "🍍", size: "Aproximadamente 44 cm", forming: "El bebé ya distingue la luz y la oscuridad.", fact: "El bebé ya pesa cerca de 2 kilos." },
-    34: { emoji: "🍈", size: "Aproximadamente 45 cm", forming: "El sistema nervioso y los pulmones siguen madurando.", fact: "El bebé ya tiene las uñas largas." },
-    35: { emoji: "🥥", size: "Aproximadamente 46 cm", forming: "El bebé gana peso rápido y se prepara para nacer.", fact: "El bebé ya ocupa casi todo el espacio." },
-    36: { emoji: "🥬", size: "Aproximadamente 47 cm", forming: "El bebé baja hacia la pelvis y se prepara para el nacimiento.", fact: "El bebé ya está casi listo para conocer el mundo." },
-    37: { emoji: "🥬", size: "Aproximadamente 48 cm", forming: "El bebé se considera a término y sigue ganando peso.", fact: "El bebé ya practica succionar y tragar." },
-    38: { emoji: "🍉", size: "Aproximadamente 49 cm", forming: "El bebé está listo: órganos maduros y peso adecuado.", fact: "El bebé ya tiene el pelo y las uñas completos." },
-    39: { emoji: "🍉", size: "Aproximadamente 50 cm", forming: "El bebé espera el momento de nacer.", fact: "El bebé ya reconoce los sonidos familiares." },
-    40: { emoji: "🍉", size: "Aproximadamente 51 cm", forming: "El bebé está listo para nacer en cualquier momento.", fact: "¡La fecha esperada es hoy! El bebé llega cuando esté listo." }
+    4: { size: "Aproximadamente 2 mm, como una semilla de amapola", forming: "Se forma el saco gestacional y empiezan las primeras células del bebé.", fact: "A esta edad, el bebé es más pequeño que un grano de arroz." },
+    5: { size: "Aproximadamente 2-3 mm", forming: "Empieza a formarse el tubo neural, que luego será el cerebro y la columna.", fact: "El corazón empieza a formarse, aunque todavía no se puede escuchar." },
+    6: { size: "Entre 4 y 6 mm, como una lenteja", forming: "El corazón ya late, se forman los brotes de brazos y piernas, y la cabeza empieza a tomar forma.", fact: "El embrión tiene forma de C, como en las imágenes de la app Embarazo+." },
+    7: { size: "Aproximadamente 1 cm, como un arándano", forming: "El cerebro crece rápido y se forman las manos y los pies.", fact: "El bebé ya se mueve un poquito, aunque todavía no se siente." },
+    8: { size: "Aproximadamente 1.5 cm, como una uva", forming: "Se forman los dedos, los ojos y las orejas, y el corazón late más fuerte.", fact: "Ya tiene todos los órganos principales empezando a formarse." },
+    9: { size: "Aproximadamente 2.3 cm, como una cereza", forming: "Se forman los codos, las rodillas y los párpados.", fact: "El bebé empieza a tragar y a mover los brazos." },
+    10: { size: "Aproximadamente 3 cm, como una fresa", forming: "Los órganos principales ya están formados y empiezan a funcionar juntos.", fact: "Los dedos de las manos y los pies ya se separaron." },
+    11: { size: "Aproximadamente 4 cm, como un limón pequeño", forming: "Se forman las uñas, los dientes de leche y el bebé empieza a bostezar.", fact: "El bebé ya puede abrir y cerrar las manos." },
+    12: { size: "Aproximadamente 5-6 cm, como un durazno pequeño", forming: "Los reflejos empiezan: el bebé responde al tacto y mueve la boca.", fact: "Termina el primer trimestre, una etapa muy importante." },
+    13: { size: "Aproximadamente 7 cm", forming: "Las cuerdas vocales se forman y el bebé traga líquido amniótico.", fact: "El bebé ya tiene huellas dactilares empezando a formarse." },
+    14: { size: "Aproximadamente 9 cm", forming: "El bebé hace muecas, frunce el ceño y mueve los brazos.", fact: "Ya se puede saber, con estudios, si será niño o niña." },
+    15: { size: "Aproximadamente 10 cm", forming: "La piel es muy fina y se ve el esqueleto empezando a endurecerse.", fact: "El bebé ya siente la luz a través de la pancita." },
+    16: { size: "Aproximadamente 12 cm, como un aguacate", forming: "Los ojos se mueven, las orejas ya están en su lugar y el bebé escucha sonidos.", fact: "El bebé ya puede escuchar tu voz." },
+    17: { size: "Aproximadamente 13 cm", forming: "El esqueleto se vuelve hueso y el bebé se mueve más.", fact: "El bebé practica succionar con el pulgar." },
+    18: { size: "Aproximadamente 14 cm", forming: "Las orejas ya están formadas y el bebé escucha los latidos de mamá.", fact: "Es un buen momento para hablarle y ponerle música." },
+    19: { size: "Aproximadamente 15 cm", forming: "Se forma una capa protectora en la piel y el bebé se mueve mucho.", fact: "Mamá puede empezar a sentir los primeros movimientos." },
+    20: { size: "Aproximadamente 16-17 cm, como un plátano", forming: "El bebé traga, produce sus primeras deposiciones y mueve las piernas.", fact: "Llegó la mitad del embarazo. ¡Ya falta menos!" },
+    21: { size: "Aproximadamente 27 cm de la cabeza a los pies", forming: "El bebé practica tragar y los movimientos son más fuertes.", fact: "El bebé ya tiene horarios de sueño y vigilia." },
+    22: { size: "Aproximadamente 28 cm", forming: "Los labios y las cejas se distinguen, y el bebé reacciona a los sonidos.", fact: "El bebé ya distingue sonidos fuertes y suaves." },
+    23: { size: "Aproximadamente 29 cm", forming: "Los pulmones empiezan a prepararse para respirar.", fact: "El bebé ya tiene hipo de vez en cuando." },
+    24: { size: "Aproximadamente 30 cm", forming: "La piel se vuelve menos transparente y el bebé gana peso.", fact: "El bebé ya puede abrir los ojos." },
+    25: { size: "Aproximadamente 35 cm", forming: "El bebé responde a la voz de mamá y papá.", fact: "El bebé ya tiene el cabello empezando a crecer." },
+    26: { size: "Aproximadamente 36 cm", forming: "Los pulmones siguen madurando y el cerebro crece rápido.", fact: "El bebé ya parpadea." },
+    27: { size: "Aproximadamente 37 cm", forming: "El bebé duerme y despierta en ciclos, como un recién nacido.", fact: "Empieza el tercer trimestre." },
+    28: { size: "Aproximadamente 38 cm", forming: "El bebé practica respirar y sus ojos ya detectan la luz.", fact: "El bebé ya sueña durante el sueño." },
+    29: { size: "Aproximadamente 39 cm", forming: "Los músculos y los pulmones siguen madurando.", fact: "El bebé ya pesa más de 1 kilo." },
+    30: { size: "Aproximadamente 40 cm", forming: "El cerebro desarrolla surcos y el bebé gana grasa.", fact: "El bebé ya se acomoda con la cabeza hacia abajo." },
+    31: { size: "Aproximadamente 41 cm", forming: "El bebé puede girar la cabeza y sus movimientos son más suaves.", fact: "El bebé ya reconoce la voz de mamá." },
+    32: { size: "Aproximadamente 42 cm", forming: "Los huesos se endurecen, menos los del cráneo.", fact: "El bebé practica respirar con más fuerza." },
+    33: { size: "Aproximadamente 44 cm", forming: "El bebé ya distingue la luz y la oscuridad.", fact: "El bebé ya pesa cerca de 2 kilos." },
+    34: { size: "Aproximadamente 45 cm", forming: "El sistema nervioso y los pulmones siguen madurando.", fact: "El bebé ya tiene las uñas largas." },
+    35: { size: "Aproximadamente 46 cm", forming: "El bebé gana peso rápido y se prepara para nacer.", fact: "El bebé ya ocupa casi todo el espacio." },
+    36: { size: "Aproximadamente 47 cm", forming: "El bebé baja hacia la pelvis y se prepara para el nacimiento.", fact: "El bebé ya está casi listo para conocer el mundo." },
+    37: { size: "Aproximadamente 48 cm", forming: "El bebé se considera a término y sigue ganando peso.", fact: "El bebé ya practica succionar y tragar." },
+    38: { size: "Aproximadamente 49 cm", forming: "El bebé está listo: órganos maduros y peso adecuado.", fact: "El bebé ya tiene el pelo y las uñas completos." },
+    39: { size: "Aproximadamente 50 cm", forming: "El bebé espera el momento de nacer.", fact: "El bebé ya reconoce los sonidos familiares." },
+    40: { size: "Aproximadamente 51 cm", forming: "El bebé está listo para nacer en cualquier momento.", fact: "¡La fecha esperada es hoy! El bebé llega cuando esté listo." }
   };
+
+
+  /* Ilustración animada del bebé por etapa (SVG inline, estilo acuarela cálida).
+     Sin emojis: la figura cambia visiblemente con la semana. */
+  function babyStage(w) {
+    if (w <= 5) return 1;
+    if (w <= 8) return 2;
+    if (w <= 12) return 3;
+    if (w <= 20) return 4;
+    return 5;
+  }
+  function babySvgForWeek(w) {
+    var s = babyStage(w);
+    var glow = '<circle class="glow" cx="150" cy="150" r="118" fill="url(#bgGlow)"/>';
+    var defs = '<defs>'
+      + '<radialGradient id="bgGlow" cx="50%" cy="45%" r="60%"><stop offset="0%" stop-color="#ffe9c9"/><stop offset="60%" stop-color="#ffd9b8"/><stop offset="100%" stop-color="#f6c6c6" stop-opacity="0.25"/></radialGradient>'
+      + '<linearGradient id="skin" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fbd7b3"/><stop offset="55%" stop-color="#f3b98d"/><stop offset="100%" stop-color="#e89a72"/></linearGradient>'
+      + '<linearGradient id="skin2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fde3c2"/><stop offset="100%" stop-color="#f0b184"/></linearGradient>'
+      + '</defs>';
+    var open = '<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' + defs + glow;
+    var close = '</svg>';
+    if (s === 1) {
+      // Semanas 4-5: embrión diminuto, forma curva en C, sin extremidades.
+      return open
+        + '<g class="breathe"><path d="M150 96 C 118 96 102 124 112 156 C 120 182 142 200 168 196 C 192 192 202 168 194 146 C 188 128 176 96 150 96 Z" fill="url(#skin)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
+        + '<circle cx="138" cy="128" r="5" fill="#4f3423" opacity="0.75"/>'
+        + '<path d="M112 156 C 104 176 118 192 138 194" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
+        + '<circle cx="196" cy="222" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="176" cy="238" r="3" fill="#e89aa0" opacity="0.6"/><circle cx="214" cy="204" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
+    }
+    if (s === 2) {
+      // Semanas 6-8: embrión en C, cabeza grande, ojo, colita, cordón.
+      return open
+        + '<g class="breathe"><path d="M196 108 C 172 74 122 72 100 102 C 82 128 88 168 116 188 C 138 202 168 202 184 184 C 196 170 192 148 176 138 C 188 132 198 122 196 108 Z" fill="url(#skin)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
+        + '<circle cx="128" cy="118" r="7" fill="#4f3423"/><circle cx="130" cy="116" r="2.5" fill="#fff"/>'
+        + '<path d="M100 102 C 92 118 96 136 110 146" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M184 184 C 196 200 190 222 168 230" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path class="bob" d="M168 230 C 150 244 128 246 112 236" fill="none" stroke="#e89aa0" stroke-width="4" stroke-linecap="round"/>'
+        + '<circle cx="216" cy="228" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="196" cy="246" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
+    }
+    if (s === 3) {
+      // Semanas 9-12: bebito pequeño, brotes de brazos y piernas.
+      return open
+        + '<g class="breathe"><ellipse cx="150" cy="118" rx="52" ry="48" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
+        + '<circle cx="132" cy="112" r="6" fill="#4f3423"/><circle cx="168" cy="112" r="6" fill="#4f3423"/>'
+        + '<path d="M138 138 Q150 146 162 138" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M150 166 C 128 166 116 186 120 208 C 124 228 140 238 158 236 C 178 234 188 216 184 196 C 181 178 170 166 150 166 Z" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
+        + '<path d="M122 188 C 108 196 104 210 112 220" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
+        + '<path d="M180 190 C 192 198 194 212 186 222" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
+        + '<path d="M138 236 C 134 248 138 256 148 258" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
+        + '<path d="M164 236 C 168 248 164 256 154 258" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/></g>' + close;
+    }
+    if (s === 4) {
+      // Semanas 13-20: más parecido a un bebé, brazos y piernas con manitas y pies.
+      return open
+        + '<g class="breathe"><ellipse cx="150" cy="106" rx="56" ry="52" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
+        + '<circle cx="130" cy="100" r="6" fill="#4f3423"/><circle cx="170" cy="100" r="6" fill="#4f3423"/>'
+        + '<path d="M142 124 Q150 130 158 124" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M112 78 Q126 62 142 66" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M150 158 C 122 158 106 182 112 210 C 117 234 136 248 158 246 C 182 244 194 222 188 198 C 183 176 172 158 150 158 Z" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
+        + '<path class="bob" d="M114 182 C 96 192 90 210 100 224" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/>'
+        + '<circle cx="100" cy="226" r="7" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
+        + '<path d="M186 184 C 202 194 206 210 198 224" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/>'
+        + '<circle cx="198" cy="226" r="7" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
+        + '<path d="M134 246 C 128 262 132 272 144 276" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/>'
+        + '<path d="M166 246 C 172 262 168 272 156 276" fill="none" stroke="#d98a6a" stroke-width="6" stroke-linecap="round"/></g>' + close;
+    }
+    // Semanas 21-40: bebé más grande, acurrucado, con manitas cerca de la cara y pies.
+    return open
+      + '<g class="breathe"><ellipse cx="150" cy="112" rx="64" ry="58" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
+      + '<circle cx="126" cy="106" r="7" fill="#4f3423"/><circle cx="128" cy="104" r="2.5" fill="#fff"/>'
+      + '<circle cx="174" cy="106" r="7" fill="#4f3423"/><circle cx="176" cy="104" r="2.5" fill="#fff"/>'
+      + '<path d="M140 132 Q150 140 160 132" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
+      + '<path d="M106 82 Q122 62 144 66" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
+      + '<path d="M150 168 C 116 168 96 196 104 228 C 111 256 134 272 160 270 C 188 268 204 242 196 212 C 189 186 174 168 150 168 Z" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
+      + '<path class="bob" d="M110 198 C 92 210 88 230 100 244" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
+      + '<circle cx="102" cy="246" r="9" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
+      + '<path d="M190 200 C 206 212 210 230 200 244" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
+      + '<circle cx="200" cy="246" r="9" fill="url(#skin)" stroke="#d98a6a" stroke-width="2.5"/>'
+      + '<path d="M132 268 C 124 282 130 290 144 292" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
+      + '<path d="M168 268 C 176 282 170 290 156 292" fill="none" stroke="#d98a6a" stroke-width="7" stroke-linecap="round"/>'
+      + '<circle cx="232" cy="240" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="216" cy="258" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
+  }
 
   function renderWeek(w) {
     w = Math.max(4, Math.min(CURRENT_WEEK, w));
     var d = WEEK_DATA[w] || WEEK_DATA[6];
-    $("weekEmoji").textContent = d.emoji;
+    $("weekBabyArt").innerHTML = babySvgForWeek(w);
     $("weekTitle").textContent = "Semana " + w;
     $("weekLabel").textContent = "Semana " + w;
     $("weekSize").textContent = d.size;
