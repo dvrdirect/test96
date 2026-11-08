@@ -40,7 +40,10 @@ Atlas con su Data API (opción 1, la más directa para GitHub Pages).
 | `.gitignore` | Evita subir `config.js` si lo prefieres (ver nota abajo). |
 
 Familia permitida (solo estas): Daniel - Papá, Yareni - Mamá,
-Luisa - Abuela, Rosario - Tía. Semana actual calculada desde la
+Luisa - Abuela, Rosario - Tía. Amigos de Yareni: Nelly, Vale, Mike,
+Hazael, Daniela, Bruno, Ricardo, Jesús — su rol es "serás amiga/amigo
+de mi mami". Si un nombre se repite, la página muestra las opciones
+con apellido para elegir quién es. Semana actual calculada desde la
 última regla: **26 de septiembre de 2026** (semana 6 el 7 nov 2026).
 Fecha esperada de nacimiento: **3 de julio de 2027 (estimada)**.
 
