@@ -1,7 +1,9 @@
-/* Sorpresa Bebé — versión estática para GitHub Pages + MongoDB Atlas Data API
-   Si la Data API no está configurada en config.js, todo funciona en modo
+/* Sorpresa Bebé — versión estática para GitHub Pages + backend Vercel
+   Si BACKEND_URL no está configurado en config.js, todo funciona en modo
    local (localStorage) y se avisa que los resultados compartidos necesitan
-   la Data API. No hay credenciales reales en este archivo. */
+   el backend. La Data API de Atlas está retirada; la página habla con el
+   backend en Vercel, que es el que se conecta a Atlas. No hay
+   credenciales reales en este archivo. */
 
 (function () {
   "use strict";
@@ -16,7 +18,9 @@
   var DUE_TEXT = "3 de julio de 2027";
 
   var cfg = window.SORPRESA_CONFIG || {};
-  var apiConfigured = Boolean(cfg.DATA_API_URL && cfg.API_KEY && cfg.DATA_SOURCE && cfg.DATABASE);
+  // Backend en Vercel (ver ~/workspace/sorpresa-bebe-backend/). Vacío = modo local.
+  var backendUrl = (cfg.BACKEND_URL || "").replace(/\/$/, "");
+  var apiConfigured = Boolean(backendUrl);
 
   function $(id) { return document.getElementById(id); }
   function show(el) { if (el) el.classList.remove("hidden"); }
@@ -31,31 +35,24 @@
   }
   var CURRENT_WEEK = todayWeek();
 
-  /* ---------- MongoDB Atlas Data API ---------- */
-  function dataApi(action, body) {
-    if (!apiConfigured) return Promise.reject(new Error("Data API no configurada"));
-    return fetch(cfg.DATA_API_URL + "/action/" + action, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": cfg.API_KEY,
-        "Access-Control-Request-Headers": "*"
-      },
-      body: JSON.stringify(Object.assign({
-        dataSource: cfg.DATA_SOURCE,
-        database: cfg.DATABASE
-      }, body))
-    }).then(function (res) {
-      if (!res.ok) throw new Error("Data API error " + res.status);
+  /* ---------- Backend Vercel (MongoDB Atlas) ---------- */
+  function apiFind(collection) {
+    if (!apiConfigured) return Promise.reject(new Error("Backend no configurado"));
+    return fetch(backendUrl + "/api/" + collection).then(function (res) {
+      if (!res.ok) throw new Error("Backend error " + res.status);
       return res.json();
     });
   }
-  function apiFind(collection) {
-    return dataApi("find", { collection: collection, filter: {}, limit: 500 })
-      .then(function (r) { return r.documents || []; });
-  }
   function apiInsert(collection, doc) {
-    return dataApi("insertOne", { collection: collection, document: doc });
+    if (!apiConfigured) return Promise.reject(new Error("Backend no configurado"));
+    return fetch(backendUrl + "/api/" + collection, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(doc)
+    }).then(function (res) {
+      if (!res.ok) throw new Error("Backend error " + res.status);
+      return res.json();
+    });
   }
 
   /* ---------- Almacenamiento local (fallback) ---------- */
@@ -219,7 +216,7 @@
   function showDataNote() {
     var n = $("dataNote");
     if (!apiConfigured) {
-      n.textContent = "Modo local: los resultados compartidos necesitan la Data API configurada en config.js. Por ahora los votos se guardan solo en este dispositivo.";
+      n.textContent = "Modo local: los resultados compartidos necesitan el backend configurado (BACKEND_URL en config.js). Por ahora los votos se guardan solo en este dispositivo.";
       show(n);
     } else { hide(n); }
   }
