@@ -27,7 +27,10 @@
     { key: "daniela", first: "Daniela", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "bruno", first: "Bruno", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" },
     { key: "ricardo", first: "Ricardo", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" },
-    { key: "jesus", first: "Jesús", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" }
+    { key: "jesus", first: "Jesús", last: "Cruz", revealText: "serás amigo de mi mami", shortRole: "amigo" },
+    /* Genesis Ariana, apodo Shmuel: se admite cualquiera de los tres
+       (Shmuel, Genesis o Ariana) y es la misma persona. */
+    { key: "genesis", first: "Genesis", last: "Ariana", aliases: ["shmuel", "genesis", "ariana", "genesis ariana"], revealText: "serás amiga de mi mami", shortRole: "amiga" }
   ];
   function norm(s) { return (s || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
   function fullName(p) { return p.last ? p.first + " " + p.last : p.first; }
@@ -99,7 +102,10 @@
     hide($("nameError"));
     hide($("nameChoices"));
     if (!raw) return;
-    var matches = PEOPLE.filter(function (p) { return norm(p.first) === norm(raw) || norm(p.key) === norm(raw); });
+    var matches = PEOPLE.filter(function (p) {
+      var names = [p.first, p.key, fullName(p)].concat(p.aliases || []);
+      return names.some(function (n) { return norm(n) === norm(raw); });
+    });
     if (!matches.length) {
       var err = $("nameError");
       err.textContent = "Hmm, ese nombre no está en la lista. Escríbelo tal como está en la lista, por favor 💛";

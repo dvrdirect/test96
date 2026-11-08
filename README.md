@@ -41,7 +41,8 @@ Atlas con su Data API (opción 1, la más directa para GitHub Pages).
 
 Familia permitida (solo estas): Daniel - Papá, Yareni - Mamá,
 Luisa - Abuela, Rosario - Tía. Amigos de Yareni: Nelly, Vale, Mike,
-Hazael, Daniela, Bruno, Ricardo, Jesús — su rol es "serás amiga/amigo
+Hazael, Daniela, Bruno, Ricardo, Jesús Cruz, y Genesis Ariana (apodo
+Shmuel; se admite Shmuel, Genesis o Ariana) — su rol es "serás amiga/amigo
 de mi mami". Si un nombre se repite, la página muestra las opciones
 con apellido para elegir quién es. Semana actual calculada desde la
 última regla: **26 de septiembre de 2026** (semana 6 el 7 nov 2026).
