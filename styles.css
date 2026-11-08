@@ -1,0 +1,199 @@
+/* Sorpresa Bebé — paleta cálida, minimalista, mobile-first */
+:root {
+  --cream: #fef7ec;
+  --cream-2: #fdf0dc;
+  --peach: #ffd9b8;
+  --pink: #f6c6c6;
+  --rose: #e89aa0;
+  --rose-deep: #d97b84;
+  --gold: #d9a441;
+  --gold-soft: #f2c96b;
+  --brown: #4f3423;
+  --brown-soft: #7a5a3f;
+  --white: #fffdf9;
+  --whatsapp: #25d366;
+  --whatsapp-dark: #1da851;
+  --radius: 20px;
+  --shadow: 0 10px 30px rgba(79, 52, 35, 0.12);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--cream);
+  color: var(--brown);
+  line-height: 1.6;
+  min-height: 100vh;
+  transition: background 1s ease;
+}
+
+body.revealed {
+  background: linear-gradient(180deg, var(--peach) 0%, var(--pink) 55%, var(--cream) 100%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, .title-font { font-family: "Fredoka", "Quicksand", sans-serif; }
+
+main { max-width: 640px; margin: 0 auto; padding: 24px 18px 48px; }
+
+section { margin: 36px 0; }
+
+.card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 22px;
+  text-align: center;
+}
+
+.hidden { display: none !important; }
+
+/* ---- Primera pantalla: secreta y minimalista ---- */
+#screen-name { min-height: 78vh; display: flex; flex-direction: column; justify-content: center; }
+#screen-name h1 { font-size: 2rem; margin: 0 0 8px; font-weight: 600; }
+#screen-name p { color: var(--brown-soft); margin: 0 0 22px; }
+
+label { display: block; text-align: left; font-weight: 700; margin: 14px 0 6px; }
+
+input[type="text"], input[type="email"], input[type="tel"], textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1.1rem;
+  font-family: inherit;
+  border: 2px solid #ead9c2;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--brown);
+  outline: none;
+}
+input:focus, textarea:focus { border-color: var(--rose); box-shadow: 0 0 0 4px rgba(232, 154, 160, 0.25); }
+textarea { min-height: 150px; resize: vertical; line-height: 1.9; }
+
+button, .btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 26px;
+  border-radius: 999px;
+  background: var(--rose-deep);
+  color: #fff;
+  margin-top: 18px;
+  box-shadow: 0 6px 18px rgba(217, 123, 132, 0.4);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+button:hover { transform: translateY(-1px); }
+button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-secondary { background: #fff; color: var(--brown); border: 2px solid #ead9c2; box-shadow: none; }
+.btn-whatsapp { background: var(--whatsapp); color: #fff; box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4); }
+.btn-whatsapp.selected { outline: 3px solid var(--whatsapp-dark); box-shadow: 0 0 0 5px rgba(37, 211, 102, 0.25); }
+.btn-email.selected { outline: 3px solid var(--gold); }
+
+.error { color: #b3261e; font-weight: 700; margin-top: 12px; }
+.note { font-size: 0.9rem; color: var(--brown-soft); }
+.small-note {
+  display: inline-block; margin-top: 14px; padding: 8px 12px;
+  background: #fff3cd; border-radius: 10px; font-size: 0.88rem; color: #6b4e00;
+}
+
+/* ---- Saludo escalonado / sorpresa ---- */
+.reveal-line {
+  font-family: "Fredoka", sans-serif;
+  font-size: 2rem; line-height: 1.25; margin: 10px 0;
+  animation: fadeUp 0.9s ease both;
+}
+.reveal-role {
+  font-family: "Fredoka", sans-serif;
+  font-size: 3rem; line-height: 1.1; margin: 12px 0; color: var(--rose-deep);
+  animation: popIn 0.7s cubic-bezier(0.2, 1.6, 0.4, 1) both;
+}
+.sorpresa {
+  font-family: "Fredoka", sans-serif;
+  font-size: 3.2rem; color: var(--rose-deep); margin: 18px 0 4px;
+  animation: bounceIn 0.9s ease both;
+  text-shadow: 0 3px 0 rgba(255, 255, 255, 0.7);
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes popIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.5); }
+  60% { opacity: 1; transform: scale(1.12); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+@keyframes wiggle { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+
+.confetti { font-size: 1.6rem; letter-spacing: 6px; animation: fadeUp 0.8s ease both; }
+
+/* ---- Bebé animado ---- */
+.baby-stage { font-size: 6rem; line-height: 1; animation: floaty 3s ease-in-out infinite; }
+.baby-stage .baby { display: inline-block; animation: wiggle 2.4s ease-in-out infinite; }
+.center { text-align: center; }
+.big-text { font-family: "Fredoka", sans-serif; font-size: 1.7rem; line-height: 1.35; }
+
+/* ---- Cochinito ---- */
+.piggy-wrap { cursor: pointer; }
+.piggy { font-size: 6rem; line-height: 1; animation: floaty 2.6s ease-in-out infinite; }
+.thought {
+  display: inline-block; background: #fff; border: 2px solid #ead9c2;
+  border-radius: 999px; padding: 8px 18px; font-weight: 700; margin-bottom: 6px;
+  box-shadow: var(--shadow);
+}
+.coin { font-size: 1.6rem; animation: popIn 0.5s ease both; }
+#clabeBox {
+  scroll-margin: 40vh;
+  background: #fff8e6; border: 2px dashed var(--gold);
+  border-radius: 14px; padding: 14px; margin-top: 16px; font-weight: 700;
+}
+#clabeBox code { font-size: 1.05rem; letter-spacing: 1px; }
+
+/* ---- Encuesta / resultados ---- */
+.vote-options { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.vote-options button { flex: 1 1 140px; }
+.bar-row { text-align: left; margin: 14px 0; }
+.bar-row .bar-label { display: flex; justify-content: space-between; font-weight: 700; }
+.bar-track { background: #f1e3d3; border-radius: 999px; height: 18px; overflow: hidden; margin-top: 6px; }
+.bar-fill { height: 100%; border-radius: 999px; transition: width 0.8s ease; }
+.bar-nino { background: #7fb3d5; }
+.bar-nina { background: var(--rose); }
+.name-list { text-align: left; list-style: none; padding: 0; margin: 12px 0 0; }
+.name-list li { display: flex; justify-content: space-between; padding: 8px 4px; border-bottom: 1px solid #f1e3d3; }
+
+/* ---- Sección bebé por semana ---- */
+.week-controls { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 12px 0; }
+.week-controls button { margin-top: 0; padding: 10px 18px; }
+.week-badge { display: inline-block; background: var(--rose); color: #fff; border-radius: 999px; padding: 4px 14px; font-weight: 700; }
+input[type="range"] { width: 100%; accent-color: var(--rose-deep); }
+.week-info { text-align: left; }
+.week-info p { margin: 8px 0; }
+.week-info strong { color: var(--brown); }
+
+/* ---- Carta ---- */
+.letter-paper {
+  background:
+    repeating-linear-gradient(#fffdf9 0 34px, #e8d9c8 34px 35px);
+  border-radius: 12px; padding: 22px 20px 26px; text-align: left;
+  box-shadow: var(--shadow); border: 1px solid #ead9c2;
+}
+.letter-paper h3 { margin-top: 0; }
+.letter-paper textarea { background: transparent; border: none; box-shadow: none; padding: 0; line-height: 35px; }
+.letter-paper textarea:focus { box-shadow: none; }
+.letter-item { text-align: left; background: #fff; border: 1px solid #ead9c2; border-radius: 12px; padding: 14px 16px; margin: 10px 0; }
+.letter-item .author { font-weight: 700; color: var(--rose-deep); }
+
+/* ---- Footer newsletter ---- */
+footer { margin-top: 48px; }
+.channel-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.channel-row button { flex: 1 1 160px; }
+.success { background: #e6f7ec; border: 2px solid var(--whatsapp); color: #14532d; border-radius: 14px; padding: 14px; font-weight: 700; margin-top: 14px; }
+
+@media (max-width: 420px) {
+  .reveal-line { font-size: 1.7rem; }
+  .reveal-role { font-size: 2.5rem; }
+  .sorpresa { font-size: 2.6rem; }
+  .baby-stage, .piggy { font-size: 5rem; }
+}
