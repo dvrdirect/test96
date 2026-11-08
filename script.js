@@ -107,7 +107,7 @@
       show($("revealStep2"));
       return sleep(1600);
     }).then(function () {
-      $("revealRole").textContent = currentPerson.role;
+      $("revealRole").textContent = "serás mi " + currentPerson.role;
       show($("revealRole"));
       scrollToEl($("revealRole"));
       return sleep(2000);
