@@ -160,7 +160,7 @@
     }
     $("piggyThought").textContent = "¡Gracias! 🪙";
     var t = $("piggyText");
-    t.textContent = "¿Me regalas una monedita, " + currentPerson.role + "?";
+    t.textContent = "¿Me das mi primer domingo, " + currentPerson.role + "?";
     show(t);
     show($("clabeBox"));
     // CLABE visible de inmediato, sin desplazar a mano.

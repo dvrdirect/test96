@@ -141,8 +141,8 @@ button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
 .piggy-wrap:hover, .piggy-wrap:focus-visible { transform: scale(1.05); }
 .piggy-wrap:active { transform: scale(0.96); }
 .piggy-wrap { transition: transform 0.15s ease; }
-.piggy-svg { width: min(240px, 68vw); height: auto; display: block; animation: floaty 2.6s ease-in-out infinite; }
-.piggy-wrap.piggy-jump .piggy-svg { animation: piggyJump 0.7s ease both; }
+.piggy-img { width: min(240px, 68vw); height: auto; display: block; border-radius: 20px; animation: floaty 2.6s ease-in-out infinite; }
+.piggy-wrap.piggy-jump .piggy-img { animation: piggyJump 0.7s ease both; }
 @keyframes piggyJump { 0% { transform: translateY(0) rotate(0deg); } 30% { transform: translateY(-22px) rotate(-6deg) scale(1.05); } 60% { transform: translateY(0) rotate(4deg); } 100% { transform: translateY(0) rotate(0deg); } }
 .coin-drop { position: relative; height: 0; }
 .coin-disc { position: absolute; left: 50%; top: -118px; margin-left: -18px; width: 36px; height: 36px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ffe27a, #f2c96b 55%, #d9a441); border: 2px solid #b98a2e; color: #7a5a1a; font-family: "Fredoka", sans-serif; font-weight: 700; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }

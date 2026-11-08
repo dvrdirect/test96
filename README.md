@@ -131,7 +131,7 @@ window.SORPRESA_CONFIG = {
 2. Escribe `Luisa` → debe aparecer: “Hola, Luisa,” → “¡Sorpresa!”
    → “en 2027” → “serás mi Abuela” → bebé → “Nos vemos en julio
    de 2027” → cochinito.
-3. Toca el cochinito → debe aparecer “¿Me regalas una monedita,
+3. Toca el cochinito → debe aparecer “¿Me das mi primer domingo,
    Abuela?” y la CLABE de ejemplo **visible de inmediato**.
 4. Vota un nombre y niño/niña → deben aparecer los resultados.
    Abre el link en otro celular/navegador y vota de nuevo:
