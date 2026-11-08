@@ -27,7 +27,7 @@
     var now = new Date(); now.setHours(0, 0, 0, 0);
     var days = Math.floor((now - LMP) / 86400000);
     var w = Math.floor(days / 7);
-    return Math.max(4, Math.min(40, w));
+    return Math.max(1, Math.min(40, w));
   }
   var CURRENT_WEEK = todayWeek();
 
@@ -149,6 +149,18 @@
     coins += 1;
     $("coinCount").textContent = String(coins);
     show($("coinCounter"));
+    // Interactivo: el cochinito salta/menea y cae una moneda.
+    var wrap = $("piggyWrap");
+    wrap.classList.remove("piggy-jump");
+    void wrap.offsetWidth; // reinicia la animación
+    wrap.classList.add("piggy-jump");
+    var drop = $("coinDrop");
+    if (drop) {
+      drop.classList.remove("hidden", "coin-fall");
+      void drop.offsetWidth;
+      drop.classList.add("coin-fall");
+      setTimeout(function () { drop.classList.add("hidden"); drop.classList.remove("coin-fall"); }, 900);
+    }
     $("piggyThought").textContent = "¡Gracias! 🪙";
     var t = $("piggyText");
     t.textContent = "¿Me regalas una monedita, " + currentPerson.role + "?";
@@ -243,9 +255,12 @@
 
   /* ---------- 5. Bebé por semana ---------- */
   var WEEK_DATA = {
+    1: { size: "Aún no se ve, pero todo está empezando", forming: "El cuerpo de mamá se prepara y comienza una historia nueva.", fact: "Todo empezó con un deseo enorme y mucho amor. ¡Ya viene en camino!" },
+    2: { size: "Como una semillita invisible, más pequeña que un punto", forming: "Las primeras células se juntan y empiezan a formar una vida nueva.", fact: "En estos días, mamá y papá todavía no lo saben, pero el milagro ya empezó." },
+    3: { size: "Aproximadamente 1-2 mm, como una semillita", forming: "El bebé se acomoda en su lugar y la prueba de embarazo sale positiva.", fact: "¡La prueba salió positiva! Mamá y papá lloraron de alegría al enterarse." },
     4: { size: "Aproximadamente 2 mm, como una semilla de amapola", forming: "Se forma el saco gestacional y empiezan las primeras células del bebé.", fact: "A esta edad, el bebé es más pequeño que un grano de arroz." },
     5: { size: "Aproximadamente 2-3 mm", forming: "Empieza a formarse el tubo neural, que luego será el cerebro y la columna.", fact: "El corazón empieza a formarse, aunque todavía no se puede escuchar." },
-    6: { size: "Entre 4 y 6 mm, como una lenteja", forming: "El corazón ya late, se forman los brotes de brazos y piernas, y la cabeza empieza a tomar forma.", fact: "El embrión tiene forma de C, como en las imágenes de la app Embarazo+." },
+    6: { size: "Entre 4 y 6 mm, como una lenteja", forming: "El corazón ya late, se forman los brotes de brazos y piernas, y la cabeza empieza a tomar forma.", fact: "Su corazoncito ya late rapidísimo, más de 100 veces por minuto, y aunque es del tamaño de una lenteja, ya se mueve un poquito." },
     7: { size: "Aproximadamente 1 cm, como un arándano", forming: "El cerebro crece rápido y se forman las manos y los pies.", fact: "El bebé ya se mueve un poquito, aunque todavía no se siente." },
     8: { size: "Aproximadamente 1.5 cm, como una uva", forming: "Se forman los dedos, los ojos y las orejas, y el corazón late más fuerte.", fact: "Ya tiene todos los órganos principales empezando a formarse." },
     9: { size: "Aproximadamente 2.3 cm, como una cereza", forming: "Se forman los codos, las rodillas y los párpados.", fact: "El bebé empieza a tragar y a mover los brazos." },
@@ -286,6 +301,7 @@
   /* Ilustración animada del bebé por etapa (SVG inline, estilo acuarela cálida).
      Sin emojis: la figura cambia visiblemente con la semana. */
   function babyStage(w) {
+    if (w <= 3) return 0;
     if (w <= 5) return 1;
     if (w <= 8) return 2;
     if (w <= 12) return 3;
@@ -302,6 +318,31 @@
       + '</defs>';
     var open = '<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' + defs + glow;
     var close = '</svg>';
+    if (s === 0) {
+      // Semanas 1-3: prueba de embarazo positiva + papás llorando de alegría.
+      return open
+        + '<g class="breathe">'
+        + '<rect x="118" y="36" width="64" height="118" rx="16" fill="#fff" stroke="#d98a6a" stroke-width="3"/>'
+        + '<rect x="130" y="52" width="40" height="26" rx="6" fill="#ffe9c9" stroke="#e8c9a8" stroke-width="2"/>'
+        + '<path d="M136 65 h10 M150 65 h10" stroke="#d97b84" stroke-width="5" stroke-linecap="round"/>'
+        + '<circle cx="150" cy="106" r="16" fill="#e6f7ec" stroke="#25d366" stroke-width="3"/><path d="M142 106 l6 6 l10 -12" fill="none" stroke="#1da851" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'
+        + '<text x="150" y="140" text-anchor="middle" font-size="11" font-family="Quicksand, sans-serif" font-weight="700" fill="#4f3423">POSITIVO</text>'
+        + '</g>'
+        + '<g class="bob">'
+        + '<circle cx="88" cy="216" r="24" fill="url(#skin)" stroke="#d98a6a" stroke-width="3"/>'
+        + '<circle cx="80" cy="212" r="3" fill="#4f3423"/><circle cx="96" cy="212" r="3" fill="#4f3423"/>'
+        + '<path d="M80 226 q8 8 16 0" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path class="tear" d="M78 220 q-4 8 0 11 q4 -3 0 -11" fill="#7fb3d5"/>'
+        + '<path d="M64 246 q24 -14 48 0 l-6 22 h-36 z" fill="#7fb3d5" stroke="#5a8fb0" stroke-width="2"/>'
+        + '<circle cx="212" cy="216" r="24" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3"/>'
+        + '<circle cx="204" cy="212" r="3" fill="#4f3423"/><circle cx="220" cy="212" r="3" fill="#4f3423"/>'
+        + '<path d="M204 226 q8 8 16 0" fill="none" stroke="#b26a4a" stroke-width="3" stroke-linecap="round"/>'
+        + '<path class="tear" d="M222 220 q-4 8 0 11 q4 -3 0 -11" fill="#7fb3d5"/>'
+        + '<path d="M188 246 q24 -14 48 0 l-6 22 h-36 z" fill="#e89aa0" stroke="#d97b84" stroke-width="2"/>'
+        + '<path d="M118 250 q32 -18 64 0" fill="none" stroke="#d98a6a" stroke-width="5" stroke-linecap="round"/>'
+        + '<path d="M146 244 l0 -14 M154 244 l0 -14" stroke="#e89aa0" stroke-width="5" stroke-linecap="round"/>'
+        + '</g>' + close;
+    }
     if (s === 1) {
       // Semanas 4-5: embrión diminuto, forma curva en C, sin extremidades.
       return open
@@ -311,14 +352,22 @@
         + '<circle cx="196" cy="222" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="176" cy="238" r="3" fill="#e89aa0" opacity="0.6"/><circle cx="214" cy="204" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
     }
     if (s === 2) {
-      // Semanas 6-8: embrión en C, cabeza grande, ojo, colita, cordón.
+      // Semanas 6-8: embrión original en forma de C, acuarela suave:
+      // cabeza grande arriba, cuerpo curvado, cordón hacia el saquito.
       return open
-        + '<g class="breathe"><path d="M196 108 C 172 74 122 72 100 102 C 82 128 88 168 116 188 C 138 202 168 202 184 184 C 196 170 192 148 176 138 C 188 132 198 122 196 108 Z" fill="url(#skin)" stroke="#d98a6a" stroke-width="3" stroke-linejoin="round"/>'
-        + '<circle cx="128" cy="118" r="7" fill="#4f3423"/><circle cx="130" cy="116" r="2.5" fill="#fff"/>'
-        + '<path d="M100 102 C 92 118 96 136 110 146" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path d="M184 184 C 196 200 190 222 168 230" fill="none" stroke="#d98a6a" stroke-width="3" stroke-linecap="round"/>'
-        + '<path class="bob" d="M168 230 C 150 244 128 246 112 236" fill="none" stroke="#e89aa0" stroke-width="4" stroke-linecap="round"/>'
-        + '<circle cx="216" cy="228" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="196" cy="246" r="3" fill="#f2c96b" opacity="0.8"/></g>' + close;
+        + '<g class="breathe">'
+        + '<ellipse class="glow" cx="96" cy="238" rx="52" ry="30" fill="#fde3c2" opacity="0.85"/>'
+        + '<ellipse cx="96" cy="238" rx="44" ry="24" fill="url(#skin2)" stroke="#d98a6a" stroke-width="3"/>'
+        + '<path d="M118 226 C 140 212 156 198 162 180 C 166 170 162 162 154 160" fill="none" stroke="#e8a87c" stroke-width="5" stroke-linecap="round"/>'
+        + '<path d="M168 88 C 138 62 96 70 80 100 C 66 126 74 162 100 180 C 122 195 152 192 166 172 C 178 155 176 132 162 122 C 172 116 174 100 168 88 Z" fill="url(#skin)" stroke="#cf8261" stroke-width="3" stroke-linejoin="round"/>'
+        + '<ellipse cx="118" cy="112" rx="26" ry="30" fill="#fde3c2" opacity="0.45"/>'
+        + '<circle cx="112" cy="108" r="8" fill="#4f3423"/><circle cx="115" cy="105" r="2.8" fill="#fff"/>'
+        + '<path d="M84 132 C 80 146 88 158 100 162" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M162 122 C 172 128 176 140 170 150" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M166 172 C 176 186 172 204 156 212" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
+        + '<path d="M100 180 C 92 196 96 210 110 218" fill="none" stroke="#cf8261" stroke-width="3" stroke-linecap="round"/>'
+        + '<circle cx="216" cy="226" r="4" fill="#e89aa0" opacity="0.8"/><circle cx="198" cy="244" r="3" fill="#f2c96b" opacity="0.8"/><circle cx="232" cy="206" r="3" fill="#e89aa0" opacity="0.6"/>'
+        + '</g>' + close;
     }
     if (s === 3) {
       // Semanas 9-12: bebito pequeño, brotes de brazos y piernas.
@@ -365,7 +414,7 @@
   }
 
   function renderWeek(w) {
-    w = Math.max(4, Math.min(CURRENT_WEEK, w));
+    w = Math.max(1, Math.min(CURRENT_WEEK, w));
     var d = WEEK_DATA[w] || WEEK_DATA[6];
     $("weekBabyArt").innerHTML = babySvgForWeek(w);
     $("weekTitle").textContent = "Semana " + w;
@@ -376,7 +425,7 @@
     $("weekSlider").value = String(w);
     $("weekSlider").max = String(CURRENT_WEEK);
     $("weekNext").disabled = w >= CURRENT_WEEK;
-    $("weekPrev").disabled = w <= 4;
+    $("weekPrev").disabled = w <= 1;
     var badge = $("currentWeekBadge");
     badge.textContent = "Semana " + CURRENT_WEEK + " · ¡Estás aquí!";
     if (w === CURRENT_WEEK) hide($("goCurrentWeek")); else show($("goCurrentWeek"));

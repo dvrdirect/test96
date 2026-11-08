@@ -129,7 +129,7 @@ window.SORPRESA_CONFIG = {
 
 1. Abre el link en el celular.
 2. Escribe `Luisa` → debe aparecer: “Hola, Luisa,” → “¡Sorpresa!”
-   → “en 2027, serás,” → “Abuela” → bebé → “Nos vemos en julio
+   → “en 2027” → “Abuela” → bebé → “Nos vemos en julio
    de 2027” → cochinito.
 3. Toca el cochinito → debe aparecer “¿Me regalas una monedita,
    Abuela?” y la CLABE de ejemplo **visible de inmediato**.
