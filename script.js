@@ -16,23 +16,23 @@
      comparten el mismo nombre (se muestran las dos opciones con
      apellido para que el visitante elija quién es). */
   var PEOPLE = [
-    { key: "daniel", first: "Daniel", last: "", revealText: "serás mi Papá", shortRole: "Papá" },
-    { key: "yareni", first: "Yareni", last: "", revealText: "serás mi Mamá", shortRole: "Mamá" },
-    { key: "luisa", first: "Luisa", last: "", revealText: "serás mi Abuela", shortRole: "Abuela" },
-    { key: "rosario", first: "Rosario", last: "", revealText: "serás mi Tía", shortRole: "Tía" },
-    { key: "nelly", first: "Nelly", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" },
-    { key: "vale", first: "Vale", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" },
-    { key: "mike", first: "Mike", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" },
-    { key: "hazael", first: "Hazael", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" },
-    { key: "daniela", first: "Daniela", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" },
-    { key: "bruno", first: "Bruno", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" },
-    { key: "ricardo", first: "Ricardo", last: "", revealText: "serás amigo de mi mami", shortRole: "amigo" },
-    { key: "jesus", first: "Jesús", last: "Cruz", revealText: "serás amigo de mi mami", shortRole: "amigo" },
+    { key: "daniel", first: "Daniel", last: "", side: "familia", revealText: "serás mi Papá", shortRole: "Papá" },
+    { key: "yareni", first: "Yareni", last: "", side: "familia", revealText: "serás mi Mamá", shortRole: "Mamá" },
+    { key: "luisa", first: "Luisa", last: "", side: "familia", revealText: "serás mi Abuela", shortRole: "Abuela" },
+    { key: "rosario", first: "Rosario", last: "", side: "familia", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "nelly", first: "Nelly", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "vale", first: "Vale", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "mike", first: "Mike", last: "", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
+    { key: "hazael", first: "Hazael", last: "", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
+    { key: "daniela", first: "Daniela", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "bruno", first: "Bruno", last: "", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
+    { key: "ricardo", first: "Ricardo", last: "", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
+    { key: "jesus", first: "Jesús", last: "Cruz", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
     /* Genesis Ariana, apodo Shmuel: se admite cualquiera de los tres
        (Shmuel, Genesis o Ariana) y es la misma persona. */
-    { key: "genesis", first: "Genesis", last: "Ariana", aliases: ["shmuel", "genesis", "ariana", "genesis ariana"], revealText: "serás amiga de mi mami", shortRole: "amiga" },
-    { key: "melissa", first: "Melissa", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" },
-    { key: "silvia", first: "Silvia", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" }
+    { key: "genesis", first: "Genesis", last: "Ariana", aliases: ["shmuel", "genesis", "ariana", "genesis ariana"], side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "melissa", first: "Melissa", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "silvia", first: "Silvia", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" }
   ];
   function norm(s) { return (s || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
   function fullName(p) { return p.last ? p.first + " " + p.last : p.first; }
@@ -91,7 +91,8 @@
       name: p.key,
       displayName: fullName(p),
       revealText: p.revealText,
-      shortRole: p.shortRole
+      shortRole: p.shortRole,
+      side: p.side
     };
     $("letterAuthor").value = currentPerson.displayName;
     hide($("nameChoices"));
@@ -162,6 +163,9 @@
       scrollToEl($("revealBaby"));
       return sleep(2600);
     }).then(function () {
+      // El cochinito (primer domingo + CLABE) es solo para Daniel.
+      // Para todos los demás — familia de Yareni y sus amistades — no se muestra esa sección.
+      if (currentPerson.name !== "daniel") { hide($("revealPiggy")); return sleep(400); }
       show($("revealPiggy"));
       scrollToEl($("revealPiggy"));
       return sleep(1200);
