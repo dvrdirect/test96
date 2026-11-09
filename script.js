@@ -178,6 +178,11 @@
       renderWeek(CURRENT_WEEK);
       loadResults();
       loadLetters();
+      // Sin cochinito (todos excepto Daniel): desplazar a la siguiente
+      // sección (la encuesta) para que no se queden en el bebé.
+      if (currentPerson.name !== "daniel") {
+        setTimeout(function () { scrollToEl($("screen-survey")); }, 600);
+      }
     });
   }
 
