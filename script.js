@@ -9,17 +9,38 @@
   "use strict";
 
   /* Lista de personas que pueden entrar a la página.
-     Familia: Daniel - Papá, Yareni - Mamá, Luisa - Abuela, Rosario - Tía.
-     Amigos de Yareni (su rol: "en 2027 serás amiga/amigo de mi mami"):
-     Nelly, Vale, Mike, Hazael, Daniela, Bruno, Ricardo, Jesús.
+     Lado de Daniel (ven el cochinito): Daniel - Papá, y su familia
+     (María Luisa - Abuela, Jesús Villagómez - Abuelo, Gisela/Jorge/
+     Carlos/Diego/Maritza/Ana Metzli/Cecilia - Tíos y Tías, Alicia/
+     Angélica/Beatriz/María Dolores/María Lourdes/Paty - Tías abuelas,
+     Javier - Tío abuelo).
+     Lado de Yareni (NO ven el cochinito): Yareni - Mamá, Luisa - Abuela,
+     Rosario - Tía, y sus amistades (su rol: "en 2027 serás amiga/amigo
+     de mi mami"): Nelly, Vale, Mike, Hazael, Daniela, Bruno, Ricardo, Jesús.
      `last` es el apellido: sirve para desambiguar cuando dos personas
      comparten el mismo nombre (se muestran las dos opciones con
      apellido para que el visitante elija quién es). */
   var PEOPLE = [
-    { key: "daniel", first: "Daniel", last: "", side: "familia", revealText: "serás mi Papá", shortRole: "Papá" },
-    { key: "yareni", first: "Yareni", last: "", side: "familia", revealText: "serás mi Mamá", shortRole: "Mamá" },
-    { key: "luisa", first: "Luisa", last: "", side: "familia", revealText: "serás mi Abuela", shortRole: "Abuela" },
-    { key: "rosario", first: "Rosario", last: "", side: "familia", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "daniel", first: "Daniel", last: "", side: "daniel", revealText: "serás mi Papá", shortRole: "Papá" },
+    { key: "maria-luisa", first: "María Luisa", last: "", side: "daniel", revealText: "serás mi Abuela", shortRole: "Abuela" },
+    { key: "jesus-villagomez", first: "Jesús", last: "Villagómez", side: "daniel", revealText: "serás mi Abuelo", shortRole: "Abuelo" },
+    { key: "gisela", first: "Gisela", last: "", side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "jorge", first: "Jorge", last: "", side: "daniel", revealText: "serás mi Tío", shortRole: "Tío" },
+    { key: "carlos", first: "Carlos", last: "", side: "daniel", revealText: "serás mi Tío", shortRole: "Tío" },
+    { key: "diego", first: "Diego", last: "", side: "daniel", revealText: "serás mi Tío", shortRole: "Tío" },
+    { key: "maritza", first: "Maritza", last: "", side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "ana-metzli", first: "Ana Metzli", last: "", side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "cecilia", first: "Cecilia", last: "", aliases: ["cecy"], side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "alicia", first: "Alicia", last: "", side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "angelica", first: "Angélica", last: "", side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "beatriz", first: "Beatriz", last: "", aliases: ["bety"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "maria-dolores", first: "María Dolores", last: "", aliases: ["lolita"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "maria-lourdes", first: "María Lourdes", last: "", aliases: ["lourdes", "lulucita"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "javier", first: "Javier", last: "", side: "daniel", revealText: "serás mi Tío abuelo", shortRole: "Tío abuelo" },
+    { key: "paty", first: "Paty", last: "", aliases: ["patricia"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "yareni", first: "Yareni", last: "", side: "yareni", revealText: "serás mi Mamá", shortRole: "Mamá" },
+    { key: "luisa", first: "Luisa", last: "", side: "yareni", revealText: "serás mi Abuela", shortRole: "Abuela" },
+    { key: "rosario", first: "Rosario", last: "", side: "yareni", revealText: "serás mi Tía", shortRole: "Tía" },
     { key: "nelly", first: "Nelly", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "vale", first: "Vale", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "mike", first: "Mike", last: "", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
@@ -163,9 +184,10 @@
       scrollToEl($("revealBaby"));
       return sleep(2600);
     }).then(function () {
-      // El cochinito (primer domingo + CLABE) es solo para Daniel.
-      // Para todos los demás — familia de Yareni y sus amistades — no se muestra esa sección.
-      if (currentPerson.name !== "daniel") { hide($("revealPiggy")); return sleep(400); }
+      // El cochinito (primer domingo + CLABE) es solo para el lado de
+      // Daniel (él y su familia). Para el lado de Yareni — su familia
+      // y sus amistades — no se muestra esa sección.
+      if (currentPerson.side !== "daniel") { hide($("revealPiggy")); return sleep(400); }
       show($("revealPiggy"));
       scrollToEl($("revealPiggy"));
       return sleep(1200);
@@ -178,9 +200,9 @@
       renderWeek(CURRENT_WEEK);
       loadResults();
       loadLetters();
-      // Sin cochinito (todos excepto Daniel): desplazar a la siguiente
+      // Sin cochinito (lado de Yareni): desplazar a la siguiente
       // sección (la encuesta) para que no se queden en el bebé.
-      if (currentPerson.name !== "daniel") {
+      if (currentPerson.side !== "daniel") {
         setTimeout(function () { scrollToEl($("screen-survey")); }, 600);
       }
     });
