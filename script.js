@@ -30,7 +30,9 @@
     { key: "jesus", first: "Jesús", last: "Cruz", revealText: "serás amigo de mi mami", shortRole: "amigo" },
     /* Genesis Ariana, apodo Shmuel: se admite cualquiera de los tres
        (Shmuel, Genesis o Ariana) y es la misma persona. */
-    { key: "genesis", first: "Genesis", last: "Ariana", aliases: ["shmuel", "genesis", "ariana", "genesis ariana"], revealText: "serás amiga de mi mami", shortRole: "amiga" }
+    { key: "genesis", first: "Genesis", last: "Ariana", aliases: ["shmuel", "genesis", "ariana", "genesis ariana"], revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "melissa", first: "Melissa", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "silvia", first: "Silvia", last: "", revealText: "serás amiga de mi mami", shortRole: "amiga" }
   ];
   function norm(s) { return (s || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
   function fullName(p) { return p.last ? p.first + " " + p.last : p.first; }
@@ -359,7 +361,7 @@
      Mapa: 1-3 prueba de embarazo, 4-8 embrión semana 6,
      9-16 feto semana 12, 17-40 feto semana 20. */
   function babyImageForWeek(w) {
-    if (w <= 3) return { src: "assets/prueba-semana-3.webp", alt: "Prueba de embarazo positiva y papás llorando de alegría" };
+    if (w <= 3) return { src: "assets/prueba-semana-3.webp", alt: "Daniel y Yareni sonriendo con la prueba de embarazo positiva frente al Arco de León" };
     if (w <= 8) return { src: "assets/bebe-semana-6.webp", alt: "Embrión en forma de C dentro de una burbuja" };
     if (w <= 16) return { src: "assets/bebe-semana-12.webp", alt: "Feto en una burbuja" };
     return { src: "assets/bebe-semana-20.webp", alt: "Feto en una burbuja" };
