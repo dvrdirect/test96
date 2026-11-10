@@ -80,13 +80,32 @@
   var CURRENT_WEEK = todayWeek();
 
   /* ---------- Backend Vercel (MongoDB Atlas) ---------- */
-  function apiFind(collection) {
-    if (!apiConfigured) return Promise.reject(new Error("Backend no configurado"));
-    return fetch(backendUrl + "/api/" + collection).then(function (res) {
+  function apiFetchJson(url, attemptsLeft) {
+    return fetch(url).then(function (res) {
       if (!res.ok) throw new Error("Backend error " + res.status);
       return res.json();
+    }).catch(function (e) {
+      if (attemptsLeft > 0) {
+        // El backend gratuito de Render se duerme tras ~15 min sin uso y
+        // tarda hasta ~1 min en despertar; reintentar en vez de rendirse
+        // y mostrar una lista vacía que no es real.
+        return sleep(5000).then(function () { return apiFetchJson(url, attemptsLeft - 1); });
+      }
+      throw e;
     });
   }
+  function apiFind(collection) {
+    if (!apiConfigured) return Promise.reject(new Error("Backend no configurado"));
+    return apiFetchJson(backendUrl + "/api/" + collection, 10);
+  }
+  // Despertar el backend desde que se abre la página, no solo cuando
+  // se llega a la encuesta/cartas, para que ya esté despierto al final
+  // de la secuencia de la sorpresa.
+  function wakeBackend() {
+    if (!apiConfigured) return;
+    fetch(backendUrl + "/health").catch(function () {});
+  }
+  wakeBackend();
   function apiInsert(collection, doc) {
     if (!apiConfigured) return Promise.reject(new Error("Backend no configurado"));
     return fetch(backendUrl + "/api/" + collection, {
@@ -300,10 +319,13 @@
 
   function loadResults() {
     showDataNote();
+    $("totalVotes").textContent = "Cargando los votos de la familia… 💛";
     var p = apiConfigured
       ? apiFind(cfg.COLLECTIONS.votes)
       : Promise.resolve(localGet("sorpresa_votes"));
-    p.then(renderResults).catch(function () { renderResults(localGet("sorpresa_votes")); });
+    p.then(renderResults).catch(function () {
+      $("totalVotes").textContent = "No se pudieron cargar los votos (el servidor estaba dormido). Recarga la página y espera un momento, por favor 💛";
+    });
     if (myVote) showResults();
   }
   function showResults() { show($("surveyResults")); }
@@ -426,8 +448,12 @@
 
   /* ---------- 6. Carta al bebé ---------- */
   function loadLetters() {
+    var list = $("letterList");
+    if (list) list.innerHTML = "<p class='note'>Cargando las cartas de la familia… 💛</p>";
     var p = apiConfigured ? apiFind(cfg.COLLECTIONS.letters) : Promise.resolve(localGet("sorpresa_letters"));
-    p.then(renderLetters).catch(function () { renderLetters(localGet("sorpresa_letters")); });
+    p.then(renderLetters).catch(function () {
+      if (list) list.innerHTML = "<p class='note'>No se pudieron cargar las cartas (el servidor estaba dormido). Recarga la página y espera un momento, por favor 💛</p>";
+    });
   }
   function renderLetters(letters) {
     var list = $("letterList");
