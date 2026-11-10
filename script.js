@@ -115,7 +115,7 @@
       shortRole: p.shortRole,
       side: p.side
     };
-    $("letterAuthor").value = currentPerson.displayName;
+    $("letterAuthor").value = "Tu " + p.shortRole + " " + fullName(p);
     hide($("nameChoices"));
     startReveal();
   }
@@ -443,7 +443,7 @@
   $("saveLetterBtn").addEventListener("click", function () {
     hide($("letterError")); hide($("letterSuccess"));
     var msg = $("letterText").value.trim();
-    var author = $("letterAuthor").value.trim() || (currentPerson ? currentPerson.displayName : "Familia");
+    var author = $("letterAuthor").value.trim() || (currentPerson ? "Tu " + currentPerson.shortRole + " " + currentPerson.displayName : "Familia");
     if (!msg) {
       var err = $("letterError");
       err.textContent = "Escribe primero tu mensaje para el bebé 💛";
