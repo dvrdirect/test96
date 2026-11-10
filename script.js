@@ -53,7 +53,8 @@
        (Shmuel, Genesis o Ariana) y es la misma persona. */
     { key: "genesis", first: "Genesis", last: "Ariana", aliases: ["shmuel", "genesis", "ariana", "genesis ariana"], side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "melissa", first: "Melissa", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
-    { key: "silvia", first: "Silvia", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" }
+    { key: "silvia", first: "Silvia", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
+    { key: "brenda", first: "Brenda", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" }
   ];
   function norm(s) { return (s || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
   function fullName(p) { return p.last ? p.first + " " + p.last : p.first; }
