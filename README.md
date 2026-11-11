@@ -39,7 +39,7 @@ Atlas con su Data API (opción 1, la más directa para GitHub Pages).
 | `config.js` | **Único archivo a editar**: URL de la Data API, API Key, data source, base de datos y colecciones. Todo con placeholders. |
 | `.gitignore` | Evita subir `config.js` si lo prefieres (ver nota abajo). |
 
-Personas permitidas (31): lado de Daniel — Daniel (Papá), María Luisa (Abuela), Jesús Villagómez (Abuelo), Gisela, Jorge, Carlos, Diego, Maritza, Ana Metzli, Cecilia/Cecy (Tíos y Tías), Alicia, Angélica, Beatriz/Bety, María Dolores/Lolita, María Lourdes/Lourdes/Lulucita, Paty/Patricia (Tías abuelas) y Javier (Tío abuelo). Lado de Yareni — Yareni (Mamá), Luisa (Abuela), Rosario (Tía) y sus amistades Nelly, Vale, Mike, Hazael, Daniela, Bruno, Ricardo, Jesús Cruz, Genesis Ariana (apodo Shmuel; se admite Shmuel, Genesis o Ariana), Melissa y Silvia — su rol es "serás amiga/amigo de mi mami". El cochinito (primer domingo + CLABE) se muestra solo al lado de Daniel (él y su familia); al lado de Yareni (su familia y sus amistades) esa sección no se muestra y la página baja sola a la encuesta. Si un nombre se repite (Jesús: Cruz y Villagómez), la página muestra las opciones con apellido para elegir quién es. Semana actual calculada desde la última regla: **26 de septiembre de 2026** (semana 6 el 7 nov 2026). Fecha esperada de nacimiento: **3 de julio de 2027 (estimada)**.
+Personas permitidas (31): lado de Daniel — Daniel (Papá), María Luisa (Abuelita), Jesús Villagómez (Abuelo), Gisela, Jorge, Carlos, Diego, Maritza, Ana Metzli, Cecilia/Cecy (Tíos y Tías), Alicia, Angélica, Beatriz/Bety, María Dolores/Lolita, María Lourdes/Lourdes/Lulucita, Paty/Patricia (Tías abuelitas) y Javier (Tío abuelo). Lado de Yareni — Yareni (Mamá), Luisa (Abuelita), Rosario (Tía) y sus amistades Nelly, Vale, Mike, Hazael, Daniela, Bruno, Ricardo, Jesús Cruz, Genesis Ariana (apodo Shmuel; se admite Shmuel, Genesis o Ariana), Melissa y Silvia — su rol es "serás amiga/amigo de mi mami". El cochinito (primer domingo + CLABE) se muestra solo al lado de Daniel (él y su familia); al lado de Yareni (su familia y sus amistades) esa sección no se muestra y la página baja sola a la encuesta. Si un nombre se repite (Jesús: Cruz y Villagómez), la página muestra las opciones con apellido para elegir quién es. Semana actual calculada desde la última regla: **26 de septiembre de 2026** (semana 6 el 7 nov 2026). Fecha esperada de nacimiento: **3 de julio de 2027 (estimada)**.
 
 ---
 
@@ -126,10 +126,10 @@ window.SORPRESA_CONFIG = {
 
 1. Abre el link en el celular.
 2. Escribe `Luisa` → debe aparecer: “Hola, Luisa,” → “¡Sorpresa!”
-   → “en 2027” → “serás mi Abuela” → bebé → “Nos vemos en julio
+   → “en 2027” → “serás mi Abuelita” → bebé → “Nos vemos en julio
    de 2027” → cochinito.
 3. Toca el cochinito → debe aparecer “¿Me das mi primer domingo,
-   Abuela?” y la CLABE de ejemplo **visible de inmediato**.
+   Abuelita?” y la CLABE de ejemplo **visible de inmediato**.
 4. Vota un nombre y niño/niña → deben aparecer los resultados.
    Abre el link en otro celular/navegador y vota de nuevo:
    los resultados deben sumarse (eso confirma que Atlas está

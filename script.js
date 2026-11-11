@@ -10,11 +10,11 @@
 
   /* Lista de personas que pueden entrar a la página.
      Lado de Daniel (ven el cochinito): Daniel - Papá, y su familia
-     (María Luisa - Abuela, Jesús Villagómez - Abuelo, Gisela/Jorge/
+     (María Luisa - Abuelita, Jesús Villagómez - Abuelo, Gisela/Jorge/
      Carlos/Diego/Maritza/Ana Metzli/Cecilia - Tíos y Tías, Alicia/
-     Angélica/Beatriz/María Dolores/María Lourdes/Paty - Tías abuelas,
+     Angélica/Beatriz/María Dolores/María Lourdes/Paty - Tías abuelitas,
      Javier - Tío abuelo).
-     Lado de Yareni (NO ven el cochinito): Yareni - Mamá, Luisa - Abuela,
+     Lado de Yareni (NO ven el cochinito): Yareni - Mamá, Luisa - Abuelita,
      Rosario - Tía, y sus amistades (su rol: "en 2027 serás amiga/amigo
      de mi mami"): Nelly, Vale, Mike, Hazael, Daniela, Bruno, Ricardo, Jesús.
      `last` es el apellido: sirve para desambiguar cuando dos personas
@@ -22,7 +22,7 @@
      apellido para que el visitante elija quién es). */
   var PEOPLE = [
     { key: "daniel", first: "Daniel", last: "", side: "daniel", revealText: "serás mi Papá", shortRole: "Papá" },
-    { key: "maria-luisa", first: "María Luisa", last: "", side: "daniel", revealText: "serás mi Abuela", shortRole: "Abuela" },
+    { key: "maria-luisa", first: "María Luisa", last: "", side: "daniel", revealText: "serás mi Abuelita", shortRole: "Abuelita" },
     { key: "jesus-villagomez", first: "Jesús", last: "Villagómez", side: "daniel", revealText: "serás mi Abuelo", shortRole: "Abuelo" },
     { key: "gisela", first: "Gisela", last: "", side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
     { key: "jorge", first: "Jorge", last: "", side: "daniel", revealText: "serás mi Tío", shortRole: "Tío" },
@@ -31,15 +31,15 @@
     { key: "maritza", first: "Maritza", last: "", side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
     { key: "ana-metzli", first: "Ana Metzli", last: "", side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
     { key: "cecilia", first: "Cecilia", last: "", aliases: ["cecy"], side: "daniel", revealText: "serás mi Tía", shortRole: "Tía" },
-    { key: "alicia", first: "Alicia", last: "", side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
-    { key: "angelica", first: "Angélica", last: "", side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
-    { key: "beatriz", first: "Beatriz", last: "", aliases: ["bety"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
-    { key: "maria-dolores", first: "María Dolores", last: "", aliases: ["lolita"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
-    { key: "maria-lourdes", first: "María Lourdes", last: "", aliases: ["lourdes", "lulucita"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "alicia", first: "Alicia", last: "", side: "daniel", revealText: "serás mi Tía abuelita", shortRole: "Tía abuelita" },
+    { key: "angelica", first: "Angélica", last: "", side: "daniel", revealText: "serás mi Tía abuelita", shortRole: "Tía abuelita" },
+    { key: "beatriz", first: "Beatriz", last: "", aliases: ["bety"], side: "daniel", revealText: "serás mi Tía abuelita", shortRole: "Tía abuelita" },
+    { key: "maria-dolores", first: "María Dolores", last: "", aliases: ["lolita"], side: "daniel", revealText: "serás mi Tía abuelita", shortRole: "Tía abuelita" },
+    { key: "maria-lourdes", first: "María Lourdes", last: "", aliases: ["lourdes", "lulucita"], side: "daniel", revealText: "serás mi Tía abuelita", shortRole: "Tía abuelita" },
     { key: "javier", first: "Javier", last: "", side: "daniel", revealText: "serás mi Tío abuelo", shortRole: "Tío abuelo" },
-    { key: "paty", first: "Paty", last: "", aliases: ["patricia"], side: "daniel", revealText: "serás mi Tía abuela", shortRole: "Tía abuela" },
+    { key: "paty", first: "Paty", last: "", aliases: ["patricia"], side: "daniel", revealText: "serás mi Tía abuelita", shortRole: "Tía abuelita" },
     { key: "yareni", first: "Yareni", last: "", side: "yareni", revealText: "serás mi Mamá", shortRole: "Mamá" },
-    { key: "luisa", first: "Luisa", last: "", side: "yareni", revealText: "serás mi Abuela", shortRole: "Abuela" },
+    { key: "luisa", first: "Luisa", last: "", side: "yareni", revealText: "serás mi Abuelita", shortRole: "Abuelita" },
     { key: "rosario", first: "Rosario", last: "", side: "yareni", revealText: "serás mi Tía", shortRole: "Tía" },
     { key: "nelly", first: "Nelly", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "vale", first: "Vale", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
