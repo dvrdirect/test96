@@ -217,6 +217,12 @@
       show($("screen-baby"));
       show($("screen-letter"));
       show($("screen-footer"));
+      // El nombre del newsletter se prellena con el nombre con el que
+      // entró a la página, para que el registro quede guardado junto
+      // con su nombre (y se pueda avisarle después por su nombre).
+      if (currentPerson && $("subscribeNameInput") && !$("subscribeNameInput").value) {
+        $("subscribeNameInput").value = currentPerson.displayName;
+      }
       renderWeek(CURRENT_WEEK);
       loadResults();
       loadLetters();
@@ -513,7 +519,7 @@
       show(err);
       return;
     }
-    var sub = { channel: channel, contact: contact, createdAt: new Date().toISOString() };
+    var sub = { channel: channel, contact: contact, name: ($("subscribeNameInput").value || "").trim() || (currentPerson ? currentPerson.displayName : ""), createdAt: new Date().toISOString() };
     var done = function () { show($("subscribeSuccess")); $("contactInput").value = ""; };
     if (apiConfigured) {
       apiInsert(cfg.COLLECTIONS.subscriptions, sub).then(done).catch(function () { localPush("sorpresa_subscriptions", sub); done(); });

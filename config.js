@@ -34,6 +34,6 @@ window.SORPRESA_CONFIG = {
   COLLECTIONS: {
     votes: "votes",                 // { name, sex: "nino" | "nina", voter, createdAt }
     letters: "letters",             // { author, message, createdAt }
-    subscriptions: "subscriptions"  // { channel: "whatsapp" | "email", contact, createdAt }
+    subscriptions: "subscriptions"  // { channel: "whatsapp" | "email", contact, name, createdAt }
   }
 };
