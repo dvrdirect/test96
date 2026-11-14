@@ -15,7 +15,7 @@
      Angélica/Beatriz/María Dolores/María Lourdes/Paty - Tías abuelitas,
      Javier - Tío abuelo).
      Lado de Yareni (NO ven el cochinito): Yareni - Mamá, Luisa - Abuelita,
-     Rosario - Tía, y sus amistades (su rol: "en 2027 serás amiga/amigo
+     Rosario - Tía, Luis - Tío, y sus amistades (su rol: "en 2027 serás amiga/amigo
      de mi mami"): Nelly, Vale, Mike, Hazael, Daniela, Bruno, Ricardo, Jesús.
      `last` es el apellido: sirve para desambiguar cuando dos personas
      comparten el mismo nombre (se muestran las dos opciones con
@@ -41,6 +41,7 @@
     { key: "yareni", first: "Yareni", last: "", side: "yareni", revealText: "serás mi Mamá", shortRole: "Mamá" },
     { key: "luisa", first: "Luisa", last: "", side: "yareni", revealText: "serás mi Abuelita", shortRole: "Abuelita" },
     { key: "rosario", first: "Rosario", last: "", side: "yareni", revealText: "serás mi Tía", shortRole: "Tía" },
+    { key: "luis", first: "Luis", last: "", side: "yareni", revealText: "serás mi Tío", shortRole: "Tío" },
     { key: "nelly", first: "Nelly", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "vale", first: "Vale", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" },
     { key: "mike", first: "Mike", last: "", side: "yareni", revealText: "serás amigo de mi mami", shortRole: "amigo" },
