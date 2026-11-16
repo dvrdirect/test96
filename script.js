@@ -58,7 +58,7 @@
     { key: "brenda", first: "Brenda", last: "", side: "yareni", revealText: "serás amiga de mi mami", shortRole: "amiga" }
   ];
   function norm(s) { return (s || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
-  function fullName(p) { return p.last ? p.first + " " + p.last : p.first; }
+  function fullName(p) { return p.last ? p.first + " " + p.last : p.first; } function normName(s) { return norm(s).replace(/\bde\b/g, "").replace(/\s+/g, " ").trim(); } function nameMatches(n, q) { var c = normName(n); q = normName(q); if (c === q) return true; var a = c.split(" "); return a.length === 2 && a[0] === "maria" && (a[1] === q || a[1] + " maria" === q); }(
   var LMP = new Date(2026, 8, 26); // 26 de septiembre de 2026 (mes 8 = septiembre)
   var DUE_TEXT = "3 de julio de 2027";
 
@@ -149,7 +149,7 @@
     if (!raw) return;
     var matches = PEOPLE.filter(function (p) {
       var names = [p.first, p.key, fullName(p)].concat(p.aliases || []);
-      return names.some(function (n) { return norm(n) === norm(raw); });
+      return names.some(function (n) { return nameMatches(n, raw); });
     });
     if (!matches.length) {
       var err = $("nameError");
