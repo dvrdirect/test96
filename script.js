@@ -210,7 +210,7 @@
       // y sus amistades — no se muestra esa sección.
       if (currentPerson.side !== "daniel") { hide($("revealPiggy")); return sleep(400); }
       show($("revealPiggy"));
-      scrollToEl($("revealPiggy"));
+      // Sin auto-scroll: la página se queda en la foto del bebé.
       return sleep(1200);
     }).then(function () {
       // El resto aparece sin auto-scroll: el usuario baja cuando quiera.
@@ -227,12 +227,7 @@
       renderWeek(CURRENT_WEEK);
       loadResults();
       loadLetters();
-      // Sin cochinito (lado de Yareni): desplazar a la siguiente
-      // sección (la encuesta) para que no se queden en el bebé.
-      if (currentPerson.side !== "daniel") {
-        setTimeout(function () { scrollToEl($("screen-survey")); }, 600);
-      }
-    });
+    }); 
   }
 
   $("restartBtn").addEventListener("click", function () {
