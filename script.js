@@ -414,16 +414,18 @@
 
 
   /* Imagen del bebé por semana (acuarelas generadas, en assets/).
-     Mapa: 1-3 prueba de embarazo, 4-8 embrión semana 6,
+     Mapa: 1-3 prueba de embarazo, 4-7 embrión semana 6, 8 embrión semana 8,
      9-16 feto semana 12, 17-40 feto semana 20. */
   function babyImageForWeek(w) {
     if (w <= 3) return { src: "assets/prueba-semana-3.webp", alt: "Daniel y Yareni sonriendo con la prueba de embarazo positiva frente al Arco de León" };
-    if (w <= 8) return { src: "assets/bebe-semana-6.webp", alt: "Embrión en forma de C dentro de una burbuja" };
+    if (w <= 7) return { src: "assets/bebe-semana-6.webp", alt: "Embrión en forma de C dentro de una burbuja" };
+     if (w <= 8) return { src: "assets/bebe-semana-8.webp", alt: "Embrión de 8 semanas en forma de C dentro de una burbuja, con los deditos formándose" };
     if (w <= 16) return { src: "assets/bebe-semana-12.webp", alt: "Feto en una burbuja" };
     return { src: "assets/bebe-semana-20.webp", alt: "Feto en una burbuja" };
   }
 
-  function renderWeek(w) {
+
+function renderWeek(w) {
     w = Math.max(1, Math.min(CURRENT_WEEK, w));
     var d = WEEK_DATA[w] || WEEK_DATA[6];
     var img = babyImageForWeek(w);
