@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261126">
 </head>
 <body>
 <main>
@@ -23,6 +23,18 @@
       <div id="nameChoices" class="hidden"></div>
       <button type="submit">Continuar</button>
     </form>
+    <script>
+      // Si script.js todavía no terminó de cargar (conexión lenta), que el
+      // formulario NO recargue la página: solo avisa y espera a que cargue.
+      document.getElementById("nameForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!window.__sorpresaLoaded) {
+          var err = document.getElementById("nameError");
+          err.textContent = "Espera un momento, la página está cargando… 💛";
+          err.classList.remove("hidden");
+        }
+      });
+    </script>
   </section>
 
   <!-- ============ 2. SALUDO ESCALONADO + SORPRESA ============ -->
@@ -159,7 +171,7 @@
   </footer>
 </main>
 
-<script src="config.js"></script>
-<script src="script.js"></script>
+<script src="config.js?v=20261126"></script>
+<script src="script.js?v=20261126"></script>
 </body>
 </html>
